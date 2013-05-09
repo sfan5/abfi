@@ -133,13 +133,13 @@ to redistribute it under certain conditions.\n", PACKAGE_NAME, PACKAGE_VERSION, 
         pch = strtok(extensions, ",");
         while(pch != NULL)
         {
-#if ENABLE_EXT_STRING
+#ifdef ENABLE_EXT_STRING
             if(!strcmp(pch, "string"))
             {
                 caps[1] = 1;
             }
 #endif // ENABLE_EXT_STRING
-#if ENABLE_EXT_PSTDERR
+#ifdef ENABLE_EXT_PSTDERR
             if(!strcmp(pch, "pstderr"))
             {
                 caps[2] = 1;
@@ -147,10 +147,10 @@ to redistribute it under certain conditions.\n", PACKAGE_NAME, PACKAGE_VERSION, 
 #endif // ENABLE_EXT_PSTDERR
             if(!strcmp(pch, "*"))
             {
-#if ENABLE_EXT_STRING
+#ifdef ENABLE_EXT_STRING
                 caps[1] = 1;
 #endif // ENABLE_EXT_STRING
-#if ENABLE_EXT_PSTDERR
+#ifdef ENABLE_EXT_PSTDERR
                 caps[2] = 1;
 #endif // ENABLE_EXT_PSTDERR
             }
@@ -242,7 +242,7 @@ int exec_bf(char* cmds, size_t length, FILE* in, FILE* out, int caps[2])
                         DBGMSG("Exiting Loop because 0 in Cell %i\n",(int) CELLOFFSET);
                     }
                     break;
-#if ENABLE_EXT_STRING
+#ifdef ENABLE_EXT_STRING
                 case '"':
                     if(!caps[1]) break;
                     i++;
@@ -295,7 +295,7 @@ int exec_bf(char* cmds, size_t length, FILE* in, FILE* out, int caps[2])
                     i--; // Do not remove
                     break;
 #endif // ENABLE_EXT_STRING
-#if ENABLE_EXT_PSTDERR
+#ifdef ENABLE_EXT_PSTDERR
                 case '!':
                     if(!caps[2]) break;
                     fputc(*ptr, stderr);
