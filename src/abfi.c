@@ -22,6 +22,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <string.h>
 #ifdef HAVE_CONFIG_H
 #include "config.h"
+#else
+#define PACKAGE_NAME "abfi"
+#define PACKAGE_VERSION "0.1"
+#define PACKAGE_STRING PACKAGE_NAME " " PACKAGE_VERSION
 #endif
 
 #define NUM_CELLS 65535
